@@ -47,6 +47,7 @@ Rules like these vary by competition (UEFA has a separate "locally trained" list
 - From 2026/27 the Premier League replaces PSR with the **Squad Cost Ratio (SCR)**. Squad costs (player and head coach wages, amortised transfer fees, agent fees) are capped at **85% of football revenue plus net player-sale profit**, with a multi-year 30% allowance above 85%.
 - "Anchoring" (a hard spending cap tied to the bottom club) was voted down.
 - UEFA's SCR caps at 85% (70% in its final phase [Likely]).
+- FM27 applies Squad Cost Ratio rules globally, not just in England [Certain]. That is a signal it has become a core management constraint players expect.
 
 **Model for our game**
 - The club ledger holds income lines (gate, season tickets, broadcast by league position/appearances, prize money, sponsorship tied to reputation, merchandise, player sales) and cost lines (wages, bonuses, amortisation, agent fees, staff, facilities upkeep, loan interest).
@@ -73,21 +74,53 @@ This is the most error-prone AI system after the match engine. FM players' most 
 
 ## 4.5 Youth intake
 
-| Fact | Tag |
-|---|---|
-| Each nation has a Youth Rating that sets the size and quality of its pre-intake pool. It is dynamic in recent versions | [Certain] |
-| Club factors: Youth Facilities, Junior Coaching (both raise CA/PA of intake), Youth Recruitment (reach for home and foreign players) | [Certain] |
-| Nationality flavours attributes (e.g. Brazilian technical/creative, Scandinavian hard-working) | [Certain] |
-| Community tests dispute that Youth Facilities affect newgen PA | [Certain] that the claim exists; the effect itself is disputed |
-| Intake happens on a fixed date per nation | [Likely] |
+Checked directly against Passion4FM's youth intake guide [Certain unless tagged]:
+- **Nation Youth Rating** runs from 1 to 200 and sets average newgen quality and the chance of a "generational" player. Brazil is 163, Germany and France 155.
+- The rating is **dynamic**. It drifts with Game Importance, economic factors, FA finances, state of development, and the nation's clubs' facilities.
+- There are three club ratings on a 1 to 20 scale. **Youth Recruitment** sets how many good pre-intake juniors the club attracts and its place in the national pecking order. **Junior Coaching** sets the quality and quantity of pre-intake development. **Youth Facilities** is the infrastructure.
+- **Hidden pre-intake "juniors"** develop before intake day, and higher-reputation clubs can **poach** them, so they turn up in a rival's intake.
+- **The Head of Youth Development matters.** Working With Youngsters develops juniors. Judging Ability/Potential set the accuracy of intake star ratings. Their **personality tends to rub off** on intake players. Their **preferred formation shapes the positions** that arrive, and their **playing style tilts attribute weighting** toward technical or physical.
+- Intake-day star ratings are *perceived* CA/PA, not true values.
+- Regional templates weight attributes (Brazil flair and technique, Scandinavia aggression and work rate, Italy defensive attributes).
+- Community tests dispute whether Youth Facilities affect newgen PA [Certain that the dispute exists].
 
-**For us:** generate players from (nation profile × club academy profile × position archetype). Names come from per-nation name lists (see 05). PA follows a heavy-tailed distribution where almost all are journeymen and rare wonderkids appear.
+**For us:** a two-step pipeline. (1) Each nation keeps a rolling hidden pool of juniors, sized by its youth rating. (2) On intake day, clubs pick from the pool by recruitment rating and reputation. Then apply the club academy modifiers and the head of youth's personality, formation and style biases. Names come from per-nation CC0 lists (05). PA is heavy-tailed: almost all are journeymen, with rare wonderkids.
 
 ## 4.6 Staff
 
-Staff attributes are rated 1 to 20 [Certain]. Coaching: Attacking, Defending, Fitness, Goalkeeping (shot stopping, handling, distribution), Mental, Tactical, Technical, Working with Youngsters. Mental: Adaptability, Determination, Level of Discipline, Man Management, Motivating. Knowledge: Judging Player Ability, Judging Player Potential, Tactical Knowledge. Medical: Physiotherapy, Sports Science. Parts of this list are [Certain] per sources (Attacking, Defending, Fitness, GK coaching, Motivating, Mental, Judging Ability/Potential, Working with Youngsters). The rest comes from memory [Likely].
+Staff attributes are on a 1 to 20 scale. FM26 displays them as words [Certain]. Full list per Passion4FM [Certain]:
+- **Coaching:** Attacking, Defending, Fitness, Mental, Tactical, Technical, GK Distribution, GK Handling, GK Shot Stopping, Working with Youngsters.
+- **Mental:** Adaptability, Determination, Level of Discipline, Man Management, Motivating.
+- **Knowledge:** Tactical Knowledge.
+- **Scouting:** Judging Player Ability, Judging Player Potential.
+- **Data analysis:** Judging Player Data, Judging Team Data, Presenting Data.
+- **Medical:** Physiotherapy, Sports Science.
+
+**Non-playing tendencies** are AI personality flags that drive AI managers and directors. Examples: uses counter-attacks, relies on set pieces, uses a target man, plays kids in low-priority cups, makes early tactical changes, fits players into a preferred tactic, keeps a large senior squad, zonal marking at set pieces. Transfer flags include: signs domestic, signs lower-league, signs many youth, uses the loan market, pays fees up front, targets high-profile signings, signs young players for profit, puts the budget on one player [Certain].
+
+**For us:** these flags are the cheapest way to make 500 AI clubs behave differently. Each AI manager and director gets a small vector of such tendencies, and they feed tactic choice (Stage 8) and transfer AI (Stage 7).
 
 Training quality per category = f(best coaches assigned to that category, their workload, facilities).
+
+## 4.6b Team instructions (FM26 model, the reference for Stage 8)
+
+FM26 splits instructions by phase. Full list per FM Scout [Certain]:
+
+**In possession**
+- *Overview:* Passing Directness (Much Shorter to Much More Direct, 5 steps), Tempo (Lower/Standard/Higher), Time Wasting, Attacking Transition (Counter-Attack / Standard / Patient Build-Up), Attacking Width (5 steps), Creative Freedom (More Disciplined / Balanced / More Expressive), Play for Set Pieces.
+- *Build-up:* Build-Up Strategy (Play Through Press / Mixed / Direct), Goal Kicks (Short/Mixed/Long), GK Distribution Speed, GK Distribution Target (CBs / FBs / Midfielders / Forwards).
+- *Progression:* Pass Reception (Balanced/Overlapped), Dribbling (Reduced/Balanced/Encouraged), Supporting Runs (Both Flanks / One Flank / Balanced), Progress Through (Left/Balanced/Right).
+- *Final third:* Pass Reception, Dribbling, Patience (Work Ball Into Box / Balanced / Less Often), Shots from Distance, Crossing Style (Low/Balanced/High).
+
+**Out of possession**
+- *Overview:* Line of Engagement (High Press / Mid Block / Low Block), Defensive Line (Deeper / Standard / Higher / Much Higher), Defensive Line Behaviour (Balanced / Offside Trap / Step Up), Trigger Press (Less Often / Balanced / More Often), Defensive Transition (Counter-Press / Standard / Regroup), Tackling (Ease Off / Standard / Aggressive).
+- *Per block:* Pressing Trap (Balanced/Active) in each block, Short GK Distribution (prevent: yes/no) in the High Press, Cross Engagement (Hold Position / Balanced / Contest) in the Mid and Low Blocks.
+
+**Structure** [Certain, official FM26 feature page]: two formations (IP and OOP). The game suggests three OOP shapes for a chosen IP shape (e.g. 4-3-3 → 4-1-4-1), but any pairing is allowed. **Duties were removed**, hard-coded role instructions were cut back, and a Visualiser shows shape shifting across a 3×3 pitch grid. FM26 dropped the Mezzala, Enganche and Trequartista roles.
+
+**FM26 role catalogue** (per FM Scout) [Certain]. IP roles by position: GK 5 (Goalkeeper, Line-Holding, No-Nonsense, Sweeper, Ball-Playing), CB 6, FB 3, WB 4, DM 3, CM 5, WM 3, AM 5, W 8, ST 10. OOP roles: GK 5, CB 4 (Covering/Stopping, central/wide), FB 2 (Holding/Pressing), WB 3, DM 4 (Dropping/Screening/Pressing/Wide Covering), CM 3, and one "Tracking" role each for WM, AM, W and CF.
+
+**For us:** the phase split and the IP/OOP pairing are the design to adopt. It maps directly onto the tier-3 engine (the OOP shape sets defensive target positions, the IP shape sets attacking ones). **Names and exact option sets will be our own** (see 05). An instruction is a parameter with an enumerated value that maps to engine weights. Keep it data-driven so instructions can be added without code changes.
 
 ## 4.7 Squad dynamics and morale
 
@@ -118,6 +151,10 @@ Per the FM24 manual summaries [Certain]:
 **Model:** each (club, player) pair has a knowledge level plus a *perceived* attribute vector, generated as true value + scout bias + noise that shrinks with knowledge. Store perceived values, not re-rolls, so reports stay consistent over time.
 
 ## Sources
+- [FM Scout: FM26 team instructions](https://www.fmscout.com/a-fm26-team-instructions-guide.html)
+- [FM Scout: FM26 player roles](https://www.fmscout.com/a-football-manager-2026-player-roles.html)
+- [FM26 IP/OOP (official)](https://www.footballmanager.com/fm26/features/possession-out-possession-fm26s-new-tactical-evolution)
+- [FM Scout: FM27 new features](https://www.fmscout.com/a-football-manager-2027-new-features.html)
 - [NBC Sports: PL tie-breakers 2026](https://www.nbcsports.com/soccer/news/premier-league-tiebreaker-rules-2026-goal-difference-head-to-head-record-how-it-works)
 - [StatsUltra: GD vs H2H by league](https://statsultra.com/goal-difference-vs-head-to-head-tiebreaker/)
 - [ESPN: Serie A title play-off](https://www.espn.com/soccer/story/_/id/37629671/serie-decide-scudetto-winner-playoff-case-tie-table)

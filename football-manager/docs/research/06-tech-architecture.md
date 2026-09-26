@@ -8,6 +8,13 @@
 - **Long-lived saves.** Saves 20+ seasons in can grow large, and a schema version plus migrations are needed from day one.
 - **Buildable and testable from cloud sessions,** because that is how we are building it. Chromium and Playwright are available here, and Unity is not.
 
+### Commercial implications (added after confirming the plan is to sell)
+- **Steam is the realistic storefront for a PC management sim**, so a desktop build is the shipping target [Likely]. FM27 ships on Steam, Epic and the Xbox app [Certain]. We still develop and test in the browser, because that is fastest here. The engine/UI split means the Tauri build adds no extra game logic.
+- **Tauri over Electron for shipping:** smaller downloads and lower memory use [Certain per 2026 framework comparisons], and both are MIT/Apache licensed [Likely].
+- **Every dependency needs a licence check.** No GPL/AGPL in shipped code (see 05 §5.3). Add a CI licence scanner in Stage 1.
+- **A web demo is a marketing asset.** A browser build of an early season can serve as a playable demo or itch.io page without extra work [Guessing about marketing value].
+- **Mobile is P3.** FM's mobile edition is now Netflix-only in FM27 [Certain]. Touch UI for a data-dense game is a separate design project.
+
 ## 6.2 Options considered
 
 | Option | Verdict | Why |

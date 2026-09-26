@@ -7,7 +7,7 @@ The biggest scheduling risk is the tier-3 spatial match engine (Stage 9) and the
 | # | Stage | Delivers | Exit criteria |
 |---|---|---|---|
 | 0 | **Research** (this) | Docs in `docs/research/` | Decisions in the README accepted or changed |
-| 1 | **Foundation** | Monorepo, strict TS, seeded RNG streams, core types, save format with `schemaVersion`, `sim-cli` skeleton, CI | Determinism test passes: the same seed gives byte-identical output |
+| 1 | **Foundation** | Dedicated private repo, monorepo, strict TS, seeded RNG streams, core types, save format with `schemaVersion`, `sim-cli` skeleton, CI with a dependency licence scanner (no GPL/AGPL) | Determinism test passes: the same seed gives byte-identical output. Licence scan is green |
 | 2 | **World generation** | Nations with profiles, name generator (CC0 data), clubs with reputation, finances and facilities, players with attributes, positions, CA/PA and personality, basic staff | Generate a 20-league world in under X s. Attribute and CA distributions look plausible in a CLI report |
 | 3 | **Competitions and calendar** | League config format, round-robin fixtures, domestic cups, promotion/relegation, play-offs, per-league tie-breakers, season rollover, event calendar | Sim 10 seasons with random results. Tables, promotions and cups are all valid. Unit tests for each tie-breaker order |
 | 4 | **Quick match engine + calibration** | Tier 1 (score model) and tier 2 (minute chance model, per-player stats, cards, injuries, **match ratings**). The `MatchResult` contract. Calibration harness against openfootball results | 50-season sim. Goals/match, home/draw/away split and scoreline distribution sit within tolerance of real data. CI fails on drift |
@@ -23,4 +23,5 @@ The biggest scheduling risk is the tier-3 spatial match engine (Stage 9) and the
 
 - **The 2D match view comes late on purpose.** It is tempting to build it early because it's visual. But if it is built before tiers 1 and 2 are calibrated, it becomes a toy disconnected from the season sim.
 - **Stage 6 (UI v1) comes before transfers.** Without it, nobody plays the thing for weeks and design problems stay hidden. FM26 shows that UI is where these games live or die [Certain for FM26's reviews].
-- **Real player data is not in any stage.** See 05. If you want it, it becomes an import feature in Stage 11, loaded by the user locally.
+- **Real player data is not in any stage, and for a commercial release it must stay that way.** See 05. The open database format and editor (Stage 11) let users build their own. We never host or bundle real-name files.
+- **Pre-release checklist (added for the commercial goal):** trademark search on the game's name, a third-party notices file, credits for the CC BY data (Wyscout / Pappalardo et al.) and the MIT data (SkillCorner), a lawyer's review of names and data, Steamworks setup, and a web demo build.

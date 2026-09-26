@@ -21,6 +21,32 @@ This is a scope checklist of the systems a player expects from an FM-style game.
 | FM27 is due November 2026. Top menus stay, the sidebar toggle returns, and it adds a "Continue Flow", a Tactical Effectiveness system, cup draws and deadline day | [Certain] |
 | FM26 database: 750,000+ people, 58 playable nations, 156 playable leagues | [Certain] |
 
+### What the FM26 reviews tell us (FM Scout, all 36,004 reviews, read directly) [Certain]
+
+| Complaint (negative reviews, all languages) | Share |
+|---|---|
+| Interface and navigation | 34.0% |
+| Bugs and crashes | 32.9% |
+| "Worse than older FM games" | 17.8% |
+| Missing features | 8.8% |
+| Match engine | 8.3% |
+
+- Between launch and June 2026, patches cut complaints about missing features by 4.9 points, the match engine by 4.0 and bugs by 2.9. **Interface complaints fell only 1.3 points.**
+- **19.5% of players who *recommend* FM26 still complain about the interface** (23.8% in English reviews).
+- The specific UI complaints: too much empty space, lost information density, missing match analytics (pass networks, heat maps), and a controller-first design that feels wrong on desktop.
+
+### What FM27 changes, and so what "fixed" looks like (FM Scout, read directly) [Certain]
+- A top menu (Portal, Squad, Tactics, Recruitment, Training, Club), a control panel on each screen, the toggle button back, **editable keyboard shortcuts**, named bookmarks.
+- **Three scaling modes (Default, Detailed, Condensed)** and ultrawide support.
+- **Continue Flow modes:** Streamlined, Balanced, Comprehensive, Custom, which control how often the game stops you.
+- Cup draws (one at a time, all at once, or automatic), deadline day with agent offers building through the window.
+- Heat maps back, an expanded Data Hub, full-screen career history, an attribute polygon, a Competitions Hub.
+- Smarter markets: young players prioritise game time, AI values dressing-room leadership, **Squad Cost Ratio rules globally**.
+- **Tactical Effectiveness:** Tactical Understanding, Player Ability, Player Buy-In and Next Match Info, with each tactic rated for Intensity, Complexity and Effectiveness.
+- Not returning: end-of-season review, player data export.
+
+**Design rules for our UI, derived from the above:** information-dense by default, with a "condensed" density option. Keyboard shortcuts from v1. No screen reachable only through a hub. Match analytics (heat maps, pass networks, xG timeline) count as core, not extras. A configurable Continue Flow. Desktop mouse and keyboard first.
+
 **Takeaway.** The series' own history shows that removing expected features and making navigation harder is punished harder than a weaker engine [Likely]. Our UI must stay dense and keyboard-friendly, with fast table navigation. FM24's flow is the model.
 
 ## System inventory
@@ -140,6 +166,7 @@ This is a scope checklist of the systems a player expects from an FM-style game.
 | Social media feed | P3 | Dropped by FM26 [Certain] |
 
 ## Sources
+- [FM Scout: FM27 new features guide](https://www.fmscout.com/a-football-manager-2027-new-features.html)
 - [PC Gamer: FM25 cancellation](https://www.pcgamer.com/games/sports/sports-interactive-announces-the-shock-cancellation-of-football-manager-25-but-fans-are-weirdly-pleased-better-to-be-honest-and-admit-a-mistake/)
 - [SI statement on FM25](https://www.sports-interactive.com/news/message-sports-interactive-update-football-manager-25)
 - [GamingBolt: FM26 what's new](https://gamingbolt.com/football-manager-26-whats-new-whats-changed-and-what-to-expect)

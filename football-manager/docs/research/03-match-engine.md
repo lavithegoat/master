@@ -11,6 +11,10 @@
 | Playable leagues use the full engine. Background leagues use a quick match engine | [Certain] |
 | FM26 moved rendering to Unity but kept the engine logic proprietary. It added mocap animation, better ball physics and "thousands" of AI changes, mostly to marking and defensive positioning | [Certain] |
 | SI has not published the engine's internals | [Certain] |
+| FM21 details (official): defenders hand over marking duties when switching to close someone down; the defensive line moves as a unit and jockeys instead of diving in; players block passing lanes instead of following the ball; forwards come short to offer support or drag defenders out of position; shot selection considers the angle and the keeper's position; keepers set themselves when they see a shooter setting up; weather affects the catch-or-punch decision | [Certain] |
+| FM26 details (official): a rewritten **pass risk assessment** where players judge a pass's danger from their attributes; dribblers "stand up their marker, bait them into a challenge, then burst past"; refined pressing shapes; defenders "stretch, lunge and improvise" on interceptions; better keeper save logic, cross claiming and distribution; a new "look at" system; better corner defending | [Certain] |
+
+These notes name the behaviours our tier-3 engine must reproduce: **marking handover, the line moving as a unit, lane blocking, forwards coming short, angle-aware shot choice, keeper set position, and pass risk scored from attributes.** They go straight onto the Stage 9 test list.
 
 **Takeaway.** FM's full engine is an **agent-based spatial simulation**: 22 players plus the ball on a continuous pitch, each running a decision loop at about 4 Hz, with outcomes resolved from attributes. FM's 2D view is a rendering of that simulation, not an animation laid over a dice roll [Likely].
 
@@ -36,7 +40,7 @@ Each minute, each side rolls for a chance, with probability based on team attack
 ### C. Possession-chain / Markov model (zone-based)
 Discretise the pitch into zones (xT uses 16×12 = 192 [Certain]). A possession moves through zones by pass, carry, shot or turnover, with transition probabilities estimated from event data [Certain]. Recent work extends this to semi-Markov models that account for event timing [Certain]. openfootmanager tags itself "markov-chain" and produces a text simulation [Certain].
 - **Pros:** richer than B. It produces territory, possession %, pass counts and xG from real locations. Tactics can map onto transition matrices (for example, "direct passing" raises long-transition probabilities). Still fast.
-- **Cons:** no off-ball movement, so tactical shape is abstract. Calibrating it needs event data (StatsBomb open data can do this for R&D; see 05).
+- **Cons:** no off-ball movement, so tactical shape is abstract. Calibrating it needs event data. Use the Wyscout public dataset (CC BY 4.0, top-5 leagues 2017/18, allowed commercially with attribution). StatsBomb's terms forbid commercial use of anything derived from it (see 05).
 - **Use:** a strong candidate for the quick engine, and an upgrade path from B.
 
 ### D. Agent-based spatial simulation (FM's full engine)
@@ -49,6 +53,7 @@ Continuous 2D pitch (for example 105×68 m). A fixed timestep for physics, perha
 Positioning targets come from the tactic: the formation shape shifts with ball position, IP vs OOP shape, defensive line, width and line of engagement. Pitch-control models (Spearman: time-to-intercept from each player's max speed and acceleration [Certain]) give a principled way to score "space" for pass and run decisions.
 - **Pros:** tactics have visible, emergent effects, and it drives the 2D view directly. This is what makes FM feel like FM.
 - **Cons:** by far the most expensive system to build and tune. Unrealistic emergent behaviour is common: everyone chasing the ball, no one covering. Too slow to run for every background match.
+- **Calibration data:** SkillCorner open tracking data (MIT, 10 A-League matches) gives real player speeds, team shape width and depth, and pressing distances [Certain for licence and content]. It is the only commercially usable tracking set found.
 - **References:** Buckland, *Programming Game AI by Example*, ch. 3 (steering) and the "Simple Soccer" chapter (FSM-driven team AI) [Certain]. Reynolds, "Steering Behaviors for Autonomous Characters" (GDC 1999) [Certain]. Google Research Football, an open-source C++ physics-based 11v11 engine with full rules (offside, cards, set pieces) [Certain], worth reading for rules handling.
 
 ## 3.3 Open-source engines to study
@@ -91,6 +96,9 @@ The engine is only credible if long-run distributions match real football. Colle
 
 ## Sources
 - [FM21 match engine AI (official)](https://www.footballmanager.com/news/match-engine-ai-fm21)
+- [FM26 IP/OOP tactical evolution (official)](https://www.footballmanager.com/fm26/features/possession-out-possession-fm26s-new-tactical-evolution)
+- [Pappalardo et al. 2019 Wyscout dataset](https://www.nature.com/articles/s41597-019-0247-7)
+- [SkillCorner opendata](https://github.com/SkillCorner/opendata)
 - [Football Manager Guru: how the ME works](https://www.footballmanagerguru.com/how-football-manager-match-engine-works/)
 - [Passion4FM: database size, quick match engine](https://www.passion4fm.com/how-to-set-up-your-database-size-in-football-manager/)
 - [GamerBraves: Miles Jacobson TGS 2025](https://www.gamerbraves.com/tgs2025-studio-director-miles-jacobson-on-rebuilding-football-manager-26-from-the-ground-up/)

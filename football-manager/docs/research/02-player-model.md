@@ -4,29 +4,88 @@
 
 Visible attributes use a 1 to 20 scale. 10 is roughly professional average, 15+ is genuine quality and 17+ is elite [Certain]. There are four groups: Technical, Mental, Physical and Goalkeeping [Certain]. Goalkeepers have their own group of 13 attributes [Certain].
 
-The full list below comes from my knowledge of FM24. I could not open the primary pages (fmscout and passion4fm are blocked by this environment's network policy), so the list is tagged **[Likely]** throughout. Stage 1 should check it against a copy of the game or the SI manual.
+The lists below were checked against FM Scout's attribute guide, which gives the in-game grouping, and Passion4FM's definitions (both read directly on 26 Sep 2026).
 
-**Technical (outfield, 14)** [Likely]
+**Technical (outfield, 14)** [Certain]
 Corners, Crossing, Dribbling, Finishing, First Touch, Free Kick Taking, Heading, Long Shots, Long Throws, Marking, Passing, Penalty Taking, Tackling, Technique.
+(FM Scout's list leaves out First Touch, but Passion4FM defines it as a technical attribute. It is on every outfield profile [Certain].)
 
-**Mental (14)** [Likely]
+**Mental (14)** [Certain]
 Aggression, Anticipation, Bravery, Composure, Concentration, Decisions, Determination, Flair, Leadership, Off the Ball, Positioning, Teamwork, Vision, Work Rate.
 
-**Physical (8)** [Likely]
+**Physical (8)** [Certain]
 Acceleration, Agility, Balance, Jumping Reach, Natural Fitness, Pace, Stamina, Strength.
 
-**Goalkeeping (13)** [Likely]
-Aerial Reach, Command of Area, Communication, Eccentricity, First Touch, Handling, Kicking, One on Ones, Passing, Punching (Tendency), Reflexes, Rushing Out (Tendency), Throwing. (First Touch and Passing are shared with the technical set.)
+**Goalkeeping** [Certain]
+Aerial Reach, Command of Area, Communication, Eccentricity, Handling, Kicking, One on Ones, Reflexes, Rushing Out (Tendency), Punching (Tendency), Throwing. A goalkeeper's profile also shows First Touch and Passing [Likely], which makes up the "13" figure some guides quote.
+
+Useful definitions, because they show how narrowly SI scopes each attribute:
+- **Finishing** measures accuracy toward the intended target, not shot power or shot selection [Certain].
+- **Passing** is execution quality. Pass *choice* comes from Decisions and Vision [Certain].
+- **Eccentricity** is a keeper's tendency to do unconventional things, such as dribbling out of the area [Certain].
+- **Natural Fitness** is both how well fitness is kept up and how fast a player recovers from injury [Certain].
 
 **Footedness**: left foot and right foot strength, 1 to 20. Foot strength counts toward CA [Certain].
 
-**Hidden attributes (6)**: Consistency, Dirtiness, Important Matches, Injury Proneness, Versatility, and Adaptability [Likely]. Sources agree there are six hidden attributes on a 1 to 20 scale [Certain]. They name Consistency, Injury Proneness, Versatility and Adaptability [Certain]. The last two in my list are from memory.
+**Hidden attributes (6)** [Certain]
+| Attribute | Effect |
+|---|---|
+| Adaptability | How fast a player settles in a new country, culture or club |
+| Consistency | How often he plays to his actual ability instead of fluctuating |
+| Dirtiness | Tendency to bend the rules and commit fouls. More cards |
+| Important Matches | Performance lift or drop in derbies, cups and finals |
+| Injury Proneness | How often he gets injured |
+| Versatility | How quickly he learns new positions |
 
-**Personality attributes (hidden)**: Ambition, Controversy, Loyalty, Pressure, Professionalism, Sportsmanship, Temperament [Certain, per the personality-type source]. Personality labels are derived from these plus Determination and Leadership [Certain]. Examples [Certain]:
-- Model Citizen: Ambition 12–20, Determination 14–20, Loyalty 15–20, Pressure 14–20, Professionalism 15–20, Sportsmanship 15–20, Temperament 15–20.
-- Perfectionist: Ambition 14–20, Determination 14–20, Professionalism 14–20, Temperament 1–9.
-- Resolute: Ambition 5–20, Determination 15–17, Pressure 1–16, Professionalism 15–20, Sportsmanship 12–20.
-- Model Professional: Professionalism 20, Temperament 10–20.
+**Personality attributes (hidden, 7)** [Certain]: Ambition, Controversy, Loyalty, Pressure, Professionalism, Sportsmanship, Temperament. The personality *label* is derived from these plus Determination and Leadership. Media handling style is derived from Controversy, Pressure, Professionalism, Temperament, Sportsmanship and Loyalty [Certain].
+
+**Personality types and thresholds** (FM Scout, read directly) [Certain]. These are a lookup table from attribute ranges to a label. Several types are generated only for newgens.
+
+| Type | Requirements |
+|---|---|
+| Model Citizen | Amb 12–20, Det 14–20, Loy 15–20, Pres 14–20, Prof 15–20, Spo 15–20, Temp 15–20 |
+| Perfectionist | Amb 14–20, Det 14–20, Prof 14–20, Temp 1–9 |
+| Resolute | Amb 5–20, Det 15–17, Pres 1–16, Prof 15–20, Spo 12–20 |
+| Model Professional | Prof 20, Temp 10–20 |
+| Professional | Prof 18–20, Temp 10–20 |
+| Fairly Professional | Det 1–14, Prof 15–20 |
+| Spirited | Det 1–17, Pres 15–20, Prof 11–17, Spo 1–14, Temp 10–20 |
+| Driven | Amb 12–20, Det 17–20 |
+| Determined | Amb 1–11, Det 17–20 |
+| Fairly Determined | Det 15–17, Pres 1–16, Prof 1–14, Spo 5–20 |
+| Iron Willed | Det 15–17, Pres 20, Spo 5–20 |
+| Resilient | Amb 8–20, Det 15–17, Pres 17–20, Spo 5–20 |
+| Charismatic Leader | Lead 18–20, Spo 18–20, Temp 18–20 |
+| Born Leader | Det 20, Lead 20 |
+| Leader | Lead 19–20 |
+| Very Ambitious | Amb 20, Det 1–17, Loy 1–10 |
+| Ambitious | Amb 16–20, Det 1–17, Loy 1–10 |
+| Fairly Ambitious | Amb 15–20, Det 1–14, Prof 1–14 |
+| Fickle (newgen) | Amb 15–20, Det 1–14, Loy 1–14, Prof 1–14 |
+| Mercenary (newgen) | Amb 16–20, Det 1–17, Loy 1–3 |
+| Slack (newgen) | Det 1–9, Prof 1, Temp 5–20 |
+| Casual (newgen) | Det 1–9, Prof 1–4, Temp 5–20 |
+| Temperamental (newgen) | Prof 1–10, Temp 1–4 |
+| Easily Discouraged (newgen) | Amb 1–10, Det 1, Prof 5–20, Spo 1–17 |
+| Low Determination (newgen) | Amb 1–10, Det 1–5, Prof 5–20, Spo 1–17 |
+| Spineless (newgen) | Det 1–10, Pres 1, Prof 5–20, Spo 1–17 |
+| Low Self-Belief (newgen) | Det 1–10, Pres 1–3, Prof 5–20, Spo 1–17 |
+| Unambitious | Amb 1–5, Det 1–17, Loy 11–20 |
+| Jovial | Det 1–17, Pres 15–20, Prof 1–10, Spo 1–14, Temp 10–20 |
+| Light-Hearted | Det 1–17, Pres 15–20, Prof 1–17, Spo 15–20, Temp 10–20 |
+| Devoted / Very Loyal | Amb 5–8, Det 18–20, Loy 20 |
+| Loyal | Amb 1–7, Det 6–17, Loy 17–19 |
+| Fairly Loyal | Amb 6–14, Det 1–14, Loy 15–20, Prof 1–14 |
+| Honest | Det 1–10, Prof 5–20, Spo 20 |
+| Sporting | Det 1–10, Prof 8–20, Spo 18–20 |
+| Fairly Sporting | Amb 1–14, Det 1–14, Loy 1–14, Prof 1–14, Spo 15–20 |
+| Unsporting (newgen) | Det 10–17, Spo 1 |
+| Realist (newgen) | Det 10–17, Spo 1–4 |
+| Balanced | Amb, Det, Loy, Prof, Spo all 1–14 |
+
+Media handling styles [Certain]: Confrontational (Spo 1–4, Temp 1–4), Evasive (Cont 6–14, Pres 15–20, Prof 15–20, Temp 7–14), Level-Headed (Cont 1–14, Temp 7–20, Loy 11–20), Media-Friendly (Cont 1–14), Outspoken (Cont 15–20), Reserved (Cont 1–5, Prof 15–20, Temp 7–20), Short-Tempered (Temp 1–4), Unflappable (Pres 15–20, Temp 15–20), Volatile (Temp 1–6).
+
+**For our game:** the ranges overlap, so the label needs a priority order when several match. FM's order isn't published [Certain]. We will write our own personality taxonomy with our own names and thresholds rather than copy this table. It is SI's creative expression, and we are going commercial (see 05). The *concept* of deriving a label from hidden traits is fine to reuse [Likely, not legal advice].
 
 Scouts only hint at hidden attributes, as pros and cons in reports, and only at their extremes [Certain].
 
@@ -36,7 +95,7 @@ Scouts only hint at hidden attributes, as pros and cons in reports, and only at 
 
 ### Decision for our game
 - **Keep a 1 to 20 display, but store attributes as floats internally.** Growth from 11.0 to 11.6 then happens smoothly, without random +1 jumps. This is my design choice [Guessing: FM may do something similar internally, but I have no source].
-- **Use our own attribute names where FM's wording is distinctive.** Mechanics are not copyrightable, but copying FM's exact text and presentation adds needless risk [Likely, not legal advice]. Generic football terms ("Finishing", "Pace") are fine.
+- **Use our own attribute names where FM's wording is distinctive.** Mechanics are not copyrightable, but copying FM's exact text and presentation adds needless risk for a game we intend to sell [Likely, not legal advice]. Generic football terms ("Finishing", "Pace") are fine. FM-coined terms ("Eccentricity", "Important Matches", the personality labels) get our own names.
 - Start with the FM set so the match engine has the inputs it expects. Trim later only if an attribute has no mechanical effect.
 
 ## 2.2 Current Ability / Potential Ability
@@ -53,7 +112,9 @@ Scouts only hint at hidden attributes, as pros and cons in reports, and only at 
 **Why CA matters architecturally.** CA works as a **budget**. When a player gains CA, the points are distributed across attributes according to position weights, training focus and age. The match engine itself reads attributes, not CA [Likely]. Our plan:
 - `CA = Σ(attribute × weight[position][attribute]) + footWeight`. Weights are our own, tuned so a 20-in-everything player lands near 200.
 - Growth events add CA budget, and a distribution step turns it into attribute deltas.
-- For multi-position players, CA is computed against the most expensive of their natural positions [Guessing about FM; a reasonable default for us].
+- For multi-position players, CA is computed against the most expensive of their natural positions. The FM Scout guide's author thinks FM "likely uses the highest weight for those positions" [Likely].
+- **CA is non-linear in attributes.** FM Scout's reverse-engineering found a player with 16 in every attribute (weaker foot included) already sits at CA 199, with diminishing returns above about 17 [Certain, per their tests against 30+ in-game players]. That means attributes of 17–20 are expensive to "buy", which caps how many elite attributes one player can have. Our formula needs the same property, or the world fills with 20-in-everything players.
+- FM Scout's CA benchmarks: 130 decent Premier League player, 140 good, 150 leading, 170 world class [Certain].
 
 ## 2.3 Development and ageing
 
@@ -97,6 +158,8 @@ FM ratings use a 10-point scale that starts at 6.0. Most ratings fall between 6 
 A warning from openfootmanager, issue #607: "Match rating is never computed, and morale, ageing and awards all read it" [Certain]. Ratings feed morale, development, awards and transfer valuation. **Match ratings are a P0 dependency, not polish.**
 
 ## Sources
+- [FM Scout: understanding player attributes (grouping)](https://www.fmscout.com/a-understanding-player-attributes-fm-guide.html)
+- [FM Scout: definitive CA guide p.3 (non-linearity)](https://www.fmscout.com/a-guide-to-current-ability-in-football-manager.html?pg=3)
 - [Passion4FM: player attributes](https://www.passion4fm.com/football-manager-player-attributes/)
 - [FM Dossier: 1–20 scale](https://fmdossier.dev/guides/player-attributes-explained)
 - [Passion4FM: goalkeeper attributes](https://www.passion4fm.com/football-manager-goalkeeper-attributes/)
